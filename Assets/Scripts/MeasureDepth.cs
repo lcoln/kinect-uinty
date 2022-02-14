@@ -31,14 +31,14 @@ public class MeasureDepth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             DepthToDepth();
 
             mDepthTexture = CreateTexture();
         }
     }
 
-    private void DepthToDepth
+    private void DepthToDepth()
     {
         mDepthData = mMultiSource.GetDepthData();
 
@@ -54,15 +54,15 @@ public class MeasureDepth : MonoBehaviour
         {
             for (int y = 0;y < 1080;y++)
             {
-                newTexture.setPixel(x, y, Color.clear);
+                newTexture.SetPixel(x, y, Color.clear);
             }
         }
 
         foreach(ColorSpacePoint point in mColorSpacePoints)
         {
-            newTexture.setPixel((int)point.x, (int)point.y, Color.black);
+            newTexture.SetPixel((int)point.X, (int)point.Y, Color.red);
         }
-
+        print("done");
         return newTexture;
     }
 }
